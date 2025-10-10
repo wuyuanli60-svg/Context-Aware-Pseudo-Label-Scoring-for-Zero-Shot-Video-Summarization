@@ -42,3 +42,4 @@ Prompt structure:
   - Next scene: [next_scene_text]
   - (Optional) User preference
   - Output instruction: "Return ONE integer 0–100 (no words, no units)."
+This contextual prompt encourages the model to consider progression, novelty, and redundancy, producing smoother temporal score distributions across segments while maintaining strict per-scene independence.
