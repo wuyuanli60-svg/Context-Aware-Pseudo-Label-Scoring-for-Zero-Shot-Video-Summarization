@@ -1,0 +1,44 @@
+# Appendix D: Context-Aware Scoring Prompts
+
+(1) Target-only Prompt
+Used for the first and last scenes that naturally mark the boundaries of the video.
+
+def generate_prompt_target_only(video_description, target_scene_text, user_query):
+  Header = TVSum rubric block.
+  If user query is provided, append:
+    "User preference (optional): apply the preference modifier to the Relevance dimension if clearly aligned or misaligned."
+  Prompt content:
+    - Global video description: [video_description]
+    - Target scene description: [target_scene_text]
+    - (Optional) User preference
+    - Instruction: "Score only the target scene. Return one integer."
+
+This prompt is minimal and self-contained, focusing solely on the target segment’s semantic relevance to the global description.
+It is used to avoid over-conditioning when no preceding or following context is available.
+
+(2) Contextual Prompt
+Used for intermediate scenes where short summaries of neighboring scenes provide temporal continuity and redundancy cues.
+
+def generate_prompt_with_context(video_description, prev_scene_text, target_scene_text, next_scene_text, user_query):
+  Header = TVSum rubric block.
+  If user query is provided, append:
+    "User preference (optional): apply ONLY to Relevance (±5 at most) if clear alignment/misalignment exists."
+  Add internal reasoning rules:
+    "### Context handling (read carefully; do this INTERNALLY before scoring):"
+    - Briefly refine the Previous and Next scenes separately (1–2 short notes each).
+    - Keep only key facts: who, what action, stage/transition, and new or repeated info.
+    - Ignore decorative/background details.
+    - Base score primarily on the Target scene and Global video description.
+    - Apply small context adjustment (±5):
+      + Add up to +5 if the Target introduces new content vs both neighbors.
+      − Subtract up to −5 if the Target repeats content.
+      0 if evidence is mixed or unclear.
+    - Always score only the Target; use prev/next only for small adjustment.
+
+Prompt structure:
+  - TARGET scene: [target_scene_text]
+  - Global video description: [video_description]
+  - Previous scene: [prev_scene_text]
+  - Next scene: [next_scene_text]
+  - (Optional) User preference
+  - Output instruction: "Return ONE integer 0–100 (no words, no units)."
