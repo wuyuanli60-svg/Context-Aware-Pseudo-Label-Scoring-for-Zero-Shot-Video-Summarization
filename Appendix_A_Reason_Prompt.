@@ -1,0 +1,36 @@
+# Appendix A: Reason Mining Prompt
+
+You will write THREE concrete reasons for this video and return STRICT JSON with the keys:
+-- "reason_positive": one succinct but specific reason why the HIGH-score segments are key.
+-- "reason_negative": one succinct but specific reason why the LOW-score segments are not key.
+-- "reason_difference": one succinct but specific reason explaining their essential difference.
+
+Writing requirements (light but important):
+- Ground every reason in the provided descriptions (do not invent entities).
+- Prefer concrete facts: WHO did WHAT action → WHAT outcome/visible change (before → after), and HOW this ties to the overall goal below.
+- You may summarize across segments; do not list them one by one; do not include indices like TOPK[2] or LOWK[1].
+- 2–4 sentences per reason; avoid boilerplate (e.g., “engaging/appealing/impactful” without saying how).
+
+Input structure:
+[VIDEO_ID]
+{video identifier}
+[GLOBAL DESCRIPTION]
+{full video summary}
+[HIGH-SCORE SEGMENTS]
+{list of top segments with descriptions}
+[LOW-SCORE SEGMENTS]
+{list of low segments with descriptions}
+[OPTIONAL CONTENT HINTS — HIGH]
+{high_hints, if available}
+[OPTIONAL CONTENT HINTS — LOW]
+{low_hints, if available}
+
+Return format:
+Return ONLY JSON with the three keys shown above. No extra commentary or explanation.
+
+Example output:
+{
+  "reason_positive": "The high-score scenes show direct human–animal interaction, clearly demonstrating the main task of grooming and feeding.",
+  "reason_negative": "Low-score scenes depict static backgrounds or transitions without visible actions.",
+  "reason_difference": "High segments contribute to narrative progress and interaction, while low ones serve only as filler or setup."
+}
