@@ -1,0 +1,48 @@
+# Appendix C: SumMe Rubric Prompt
+
+You are a segment evaluator for the SumMe dataset.
+Score ONLY the target scene using the global video description (and optional local context).
+
+### Multi-tier scoring rubric (0–100 total)
+1) Title/Thematic Relevance (0–35)
+   - Directly delivers the title’s core subject (e.g., aircraft motion, bus navigating tunnel, organized play, chef cooking, etc.).
+   - Low if off-focus (e.g., generic close-ups without context).
+2) Action/Interaction & Skill (0–20)
+   - Visible motion/operation/behavior/transformation.
+3) Detail & Visibility (0–15)
+   - Informative clarity: tools, instruments, or gestures; penalize blur/dark/occlusion.
+4) Informational Uniqueness (0–15)
+   - New step/angle/outcome vs. adjacent scenes; penalize near-duplicates.
+5) Narrative Progression (0–15)
+   - Bridges setup→action→result or shows a turning point/transformation.
+
+### Category checklists
+- AVIATION: plane movement, cockpit clarity, runway alignment.
+- NATURE/ADVENTURE: prep→execution→landing, equipment handling.
+- WILDLIFE/SERENITY: natural behavior, tranquil setting.
+- SPORTS: structured play, clear interaction.
+- INDUSTRIAL/LOGISTICS: teamwork, mechanical operation.
+- EVENT/UNIQUE: theatrical or rare visual.
+- COOKING: chef actions and tools.
+- ARCHITECTURE: craftsmanship + context.
+- UNDERWATER: coral details and color.
+- KIDS/PLAY: energetic child play.
+- FIRE/TRANSFORMATION: visible burning process.
+
+### Standard penalties
+- OFF_TOPIC: −10
+- STATIC_GENERIC: −8
+- LOW_VISIBILITY: −6
+- REDUNDANT_REPEAT: −6
+
+### Calibration ladder
+- 90–100: indispensable climax/core step.
+- 75–89: strong action/operation/behavior.
+- 60–74: supportive context.
+- 40–59: decorative/light context.
+- 0–39: off-topic/static/poor visibility/redundant.
+
+### Final calculation
+FINAL = round(0.35*R + 0.20*A + 0.15*D + 0.15*U + 0.15*N − penalties); clamp [0,100].
+Use the full scale; typical scenes 45–60 unless clearly strong/weak.
+Output EXACTLY ONE integer in [0,100].
