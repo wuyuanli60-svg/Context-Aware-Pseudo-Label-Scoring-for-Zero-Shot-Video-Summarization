@@ -15,9 +15,9 @@ It supports experiments on **TVSum**, **SumMe**, and **QFVS**, including the com
 
 ## 📑 Table of Contents
 
-- [Features](#✨ Features)
-- [Environment Setup](#🛠 Environment Setup)
-- [Dataset Preparation](#📁 Dataset Preparation)
+- [Features](#Features)
+- [Environment Setup](#Environment Setup)
+- [Dataset Preparation](#Dataset Preparation)
   - [TVSum](#tvsum)
   - [SumMe](#summe)
   - [QFVS](#qfvs)
@@ -26,10 +26,9 @@ It supports experiments on **TVSum**, **SumMe**, and **QFVS**, including the com
   - [2. Core Scoring Module](#2️⃣-core-scoring-module)
   - [3. Evaluation](#3️⃣-evaluation)
 - [Full End-to-End Example](#full-end-to-end-example)
-- [Results](#📊 Results)
+- [Results](#Results)
 - [Citation](#citation)
-- [License](#📚 Citation)
-- [Citation](#📚 Citation)
+- [License](#Citation)
 
 ---
 
@@ -37,7 +36,7 @@ It supports experiments on **TVSum**, **SumMe**, and **QFVS**, including the com
 
 📄 Paper: https://arxiv.org/abs/2510.17501
 
-## ✨ Features
+## Features
 
 - 🚫 **Zero-shot pipeline** (no supervised training)
 - 📊 Evaluated on **TVSum / SumMe / QFVS**
@@ -48,7 +47,7 @@ It supports experiments on **TVSum**, **SumMe**, and **QFVS**, including the com
 
 
 
-## 🛠 Environment Setup
+## Environment Setup
 
 Clone and install:
 
@@ -59,7 +58,7 @@ pip install -r requirements.txt
 export OPENAI_API_KEY="YOUR_KEY"
 ```
 
-## 📁 Dataset Preparation
+## Dataset Preparation
 
 ## Dataset Preparation
 
@@ -81,7 +80,7 @@ https://huggingface.co/ToughStone/QFVS
 
 You can load the data via Hugging Face datasets API or download the files directly.  
 
-## 🔄 Pipeline Overview
+## Pipeline Overview
 
 ### 1️⃣ **Reason Generation**
 
@@ -119,7 +118,7 @@ python Generate_Reason/rank_segments_by_gt_points.py \
   --out outputs/reasons_gt/video01_reasons.json
 ```
 
-### 2️⃣ **Core Scoring Module**
+### **Core Scoring Module**
 
 ### TVSum Scoring Generation
 
@@ -210,7 +209,7 @@ python src/model/QFVS_solver_CoT_Context.py \
   --work_dir ./results
 ```
 
-### 3️⃣ **Evaluation**
+### **Evaluation**
 
 ### TVSum\SumMe Evaluation
 
@@ -242,11 +241,11 @@ python QFVS/evaluation/QFVS_eval.py \
 
 
 
-## 📊 Results
+## Results
 
 ![Overall architecture of the proposed framework.](./result.png)
 
-## 📚 Citation
+## Citation
 
 @article{wu2025contextaware,
   title={Context-Aware Pseudo-Label Scoring for Zero-Shot Video Summarization},
@@ -255,6 +254,6 @@ python QFVS/evaluation/QFVS_eval.py \
   year={2025}
 }
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License**.
