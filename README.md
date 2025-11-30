@@ -15,20 +15,19 @@ It supports experiments on **TVSum**, **SumMe**, and **QFVS**, including the com
 
 ## 📑 Table of Contents
 
-- [Features](#Features)
-- [Environment Setup](#Environment Setup)
-- [Dataset Preparation](#Dataset Preparation)
+- [Features](#features)
+- [Environment Setup](#environment-setup)
+- [Dataset Preparation](#dataset-preparation)
   - [TVSum](#tvsum)
   - [SumMe](#summe)
   - [QFVS](#qfvs)
 - [Pipeline Overview](#pipeline-overview)
   - [1. Reason Generation](#1️⃣-reason-generation)
   - [2. Core Scoring Module](#2️⃣-core-scoring-module)
-  - [3. Evaluation](#3️⃣-evaluation)
-- [Full End-to-End Example](#full-end-to-end-example)
-- [Results](#Results)
+  - [3. Evaluation](#-3️⃣-evaluation)
+- [Results](#results)
 - [Citation](#citation)
-- [License](#Citation)
+- [License](#license)
 
 ---
 
@@ -58,7 +57,7 @@ pip install -r requirements.txt
 export OPENAI_API_KEY="YOUR_KEY"
 ```
 
-## Dataset Preparation
+
 
 ## Dataset Preparation
 
@@ -74,11 +73,13 @@ https://data.vision.ee.ethz.ch/cvl/SumMe/SumMe.zip
 
 Note: This includes the original videos and ground truth summary annotations.  
 
-### QFVS (Query-Focused Video Summarization)  
+### QFVS  
 A publicly-available version of QFVS is hosted on Hugging Face (ToughStone / QFVS collection):  
 https://huggingface.co/ToughStone/QFVS  
 
 You can load the data via Hugging Face datasets API or download the files directly.  
+
+
 
 ## Pipeline Overview
 
