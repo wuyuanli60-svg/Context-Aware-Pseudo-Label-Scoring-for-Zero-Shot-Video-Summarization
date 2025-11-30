@@ -1,6 +1,4 @@
-# 🎬 Context-Aware Pseudo-Label Scoring for Zero-Shot
-Video Summarization
-
+# 🎬 Context-Aware Pseudo-Label Scoring for Zero-Shot Video Summarization
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)]()
 [![License](https://img.shields.io/badge/License-MIT-green.svg)]()
 [![Model](https://img.shields.io/badge/LLM-GPT--4o-orange.svg)]()
@@ -35,6 +33,10 @@ It supports experiments on **TVSum**, **SumMe**, and **QFVS**, including the com
 - [Acknowledgements](#acknowledgements)
 
 ---
+
+![Overall architecture of the proposed framework.](./ficture_method.png)
+
+📄 Paper: https://arxiv.org/abs/2510.17501
 
 ## ✨ Features
 
@@ -151,38 +153,137 @@ python Generate_Reason/rank_segments_by_gt_points.py \
 
 ### 2️⃣ **Core Scoring Module**
 
-### TVSum Scoring Gneration
+### TVSum Scoring Generation
+
+```bash
+python src/model/solver_TVSum.py \
+  --video_name sample \
+  --video_type mp4 \
+  --video_dir ./videos \
+  --work_dir ./results \
+  --openai_key YOUR_API_KEY
+```
+
+```bash
+python src/model/solver_TVSum_CoT \
+  --video_name sample \
+  --video_type mp4 \
+  --video_dir ./videos \
+  --work_dir ./results \
+  --openai_key YOUR_API_KEY
+```
+
+```bash
+python src/model/solver_TVSum_CoT_Context \
+  --video_name sample \
+  --video_type mp4 \
+  --video_dir ./videos \
+  --work_dir ./results \
+  --openai_key YOUR_API_KEY
+```
+
+### SumMe Scoring Generation
+
+```bash
+python src/model/solver_Summe.py \
+  --video_name sample \
+  --video_type mp4 \
+  --video_dir ./videos \
+  --work_dir ./results \
+  --openai_key YOUR_API_KEY
+```
+
+```bash
+python src/model/solver_Summe_CoT.py \
+  --video_name sample \
+  --video_type mp4 \
+  --video_dir ./videos \
+  --work_dir ./results \
+  --openai_key YOUR_API_KEY
+```
+
+```bash
+python src/model/solver_Summe_CoT_Context.py \
+  --video_name sample \
+  --video_type mp4 \
+  --video_dir ./videos \
+  --work_dir ./results \
+  --openai_key YOUR_API_KEY
+```
 
 
 
-### SumMe Scoring Gneration
+### QFVS Scoring Generation
 
+```bash
+python src/model/QFVS_solver.py \
+  --openai_key YOUR_API_KEY \
+  --video_name P01 \
+  --video_dir ./videos \
+  --video_type mp4 \
+  --work_dir ./results
+```
 
+```bash
+python src/model/QFVS_solver_CoT.py \
+  --openai_key YOUR_API_KEY \
+  --video_name P01 \
+  --video_dir ./videos \
+  --video_type mp4 \
+  --work_dir ./results
+```
 
-### QFVS Scoring Gneration
-
-
+```bash
+python src/model/QFVS_solver_CoT_Context.py \
+  --openai_key YOUR_API_KEY \
+  --video_name P01 \
+  --video_dir ./videos \
+  --video_type mp4 \
+  --work_dir ./results
+```
 
 ### 3️⃣ **Evaluation**
 
 ### TVSum\SumMe Evaluation
 
+```bash
+python Data_Evaluation/evaluation/eval.py \
+  --work_dir ./results/hparam_search/summe_minmax \
+  --gt_file ./data/SumMe/gt_scores.mat \
+  --splits_file ./data/SumMe/splits.json \
+  --mapping_file ./configs/summe_mapping.json \
+  --meta_data_dir ./meta/summe \
+  --metric summe \
+  --norm MinMax
+```
+
 
 
 ### QFVS Evaluation
+
+```bash
+python QFVS/evaluation/QFVS_eval.py \
+  --work_dir ./results/QFVS_eval_raw \
+  --splits_file ./data/QFVS/splits_qfvs.json \
+  --mapping_file ./configs/qfvs_mapping.json \
+  --Tags_file ./data/QFVS/Tags.mat \
+  --gt_dir ./data/QFVS/gt \
+  --meta_data_dir ./meta/QFVS \
+  --norm None
+```
 
 
 
 ## 📊 Results
 
-
+![Overall architecture of the proposed framework.](./result.png)
 
 ## 📚 Citation
 
-@article{your2025paper,
-  title={Rubric-Guided Zero-Shot Video Summarization},
-  author={Your Name},
-  journal={ArXiv},
+@article{wu2025contextaware,
+  title={Context-Aware Pseudo-Label Scoring for Zero-Shot Video Summarization},
+  author={Wu, Yuanli and Yuen, Chau and others},
+  journal={arXiv preprint arXiv:2510.17501},
   year={2025}
 }
 
