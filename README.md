@@ -16,7 +16,6 @@ It supports experiments on **TVSum**, **SumMe**, and **QFVS**, including the com
 ## 📑 Table of Contents
 
 - [Features](#✨ Features)
-- [Project Structure](#📂 Project Structure)
 - [Environment Setup](#🛠 Environment Setup)
 - [Dataset Preparation](#📁 Dataset Preparation)
   - [TVSum](#tvsum)
@@ -27,10 +26,10 @@ It supports experiments on **TVSum**, **SumMe**, and **QFVS**, including the com
   - [2. Core Scoring Module](#2️⃣-core-scoring-module)
   - [3. Evaluation](#3️⃣-evaluation)
 - [Full End-to-End Example](#full-end-to-end-example)
-- [Results](#results)
+- [Results](#📊 Results)
 - [Citation](#citation)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+- [License](#📚 Citation)
+- [Citation](#📚 Citation)
 
 ---
 
@@ -47,38 +46,7 @@ It supports experiments on **TVSum**, **SumMe**, and **QFVS**, including the com
 - ⚙ Config-based pipeline, easy to reproduce
 - 🔍 Clean modular design (Reason → Scoring → Evaluation)
 
----
 
-## 📂 Project Structure
-
-├── Data_Evaluation/
-
-│   ├── evaluation/
-│   ├── scripts/
-│   └── splits/
-│   ├── sumMe_mapping.json
-
-│   └── tvSum_mapping.json
-
-├── Generate_Reason/
-
-│   ├── QFVS-reason-generation.py
-│   └── TVSum_and_Summe_Generation.py
-├── QFVS/
-│   ├── evaluation/
-│   ├── GFVS_splits.py
-
-│   ├── QFVS_mapping.py
-
-│   ├── QFVS_mapping.json
-
-│   └── QFVS_splits.json
-
-├── src/
-│   ├──model/
-│   └── utils.py
-├── requirements.txt
-└── README.md
 
 ## 🛠 Environment Setup
 
